@@ -7,11 +7,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'router_provider.g.dart';
 
 @riverpod
-GoRouter router(RouterRef ref) => GoRouter(
-      debugLogDiagnostics: kDebugMode,
-      navigatorKey: rootNavigatorKey,
-      initialLocation: '/root1',
-      routes: [
-        ...$appRoutes,
-      ],
-    );
+GoRouter router(RouterRef ref) {
+  return GoRouter(
+    debugLogDiagnostics: kDebugMode,
+    navigatorKey: rootNavigatorKey,
+    initialLocation: '/root1',
+    routes: [
+      ...$appRoutes,
+    ],
+  );
+}

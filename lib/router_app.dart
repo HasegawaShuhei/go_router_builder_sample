@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_builder_sample/login_screen.dart';
 import 'package:go_router_builder_sample/root_1_screen.dart';
 import 'package:go_router_builder_sample/root_2_screen.dart';
 import 'package:go_router_builder_sample/root_3_screen.dart';
 import 'package:go_router_builder_sample/root_screen.dart';
 
 part 'router_app.g.dart';
+
+@TypedGoRoute<LoginRoute>(path: LoginRoute.path)
+class LoginRoute extends GoRouteData {
+  const LoginRoute();
+
+  static const path = '/login';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const LoginScreen();
+  }
+}
 
 @TypedStatefulShellRoute<RootRoute>(
   branches: [
