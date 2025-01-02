@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/auth_notifier.dart';
+import 'package:go_router_builder_sample/provider/auth_notifier.dart';
 import 'package:go_router_builder_sample/router/guards/route_guard_interface.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_route_guard.g.dart';
 
 @riverpod
-AuthRouteGuard authRouteGuard(AuthRouteGuardRef ref) => AuthRouteGuard(ref);
+AuthRouteGuard authRouteGuard(Ref ref) => AuthRouteGuard(ref);
 
 class AuthRouteGuard implements RouteGuardInterface {
   AuthRouteGuard(this.ref);
