@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/branch_container.dart';
+import 'package:go_router_builder_sample/router/branch_container.dart';
 import 'package:go_router_builder_sample/root_navigation_bar.dart';
 import 'package:go_router_builder_sample/root_tab.dart';
 

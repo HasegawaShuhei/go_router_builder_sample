@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/navigator_key.dart';
+import 'package:go_router_builder_sample/router/navigator_key.dart';
 
 class Root3Branch extends StatefulShellBranchData {
   static final $navigatorKey = root3NavigatorKey;
