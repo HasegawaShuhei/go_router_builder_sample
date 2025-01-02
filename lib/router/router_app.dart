@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/login_screen.dart';
-import 'package:go_router_builder_sample/root_1_screen.dart';
-import 'package:go_router_builder_sample/root_2_screen.dart';
-import 'package:go_router_builder_sample/root_3_screen.dart';
-import 'package:go_router_builder_sample/root_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/login_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_1_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_2_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_3_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_screen.dart';
 
 part 'router_app.g.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/root_1_screen.dart';
-import 'package:go_router_builder_sample/root_2_screen.dart';
-import 'package:go_router_builder_sample/root_3_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_1_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_2_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_3_screen.dart';
 
 enum RootTab {
   root1(Root1Route.path),
