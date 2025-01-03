@@ -8,7 +8,7 @@ import 'package:go_router_builder_sample/ui/screen/root_2_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root_3_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root_screen.dart';
 
-part 'router_app.g.dart';
+part 'router.g.dart';
 
 @TypedGoRoute<LoginRoute>(path: LoginRoute.path)
 class LoginRoute extends GoRouteData {

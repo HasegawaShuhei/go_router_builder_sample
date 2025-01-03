@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_builder_sample/router/navigator_key.dart';
-import 'package:go_router_builder_sample/router/routes/router_app.dart';
+import 'package:go_router_builder_sample/router/routes/router.dart';
 import 'package:go_router_builder_sample/ui/screen/root_1_2_screen.dart';
 
 class Root1Branch extends StatefulShellBranchData {
