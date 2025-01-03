@@ -18,5 +18,10 @@ GoRouter router(Ref ref) {
     routes: [
       ...$appRoutes,
     ],
+    // TODO: initialLocationはloadingにしておいて初期routeの決定はredirectで行うのが良さそう
+    // https://github.com/lucavenir/go_router_riverpod/blob/master/example/lib/router/router.dart
+    redirect: (context, state) async {
+      return null;
+    },
   );
 }
