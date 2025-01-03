@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_builder_sample/ui/screen/login_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/root_1_2_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root_1_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root_2_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root_3_screen.dart';
@@ -22,10 +23,17 @@ class LoginRoute extends GoRouteData {
 
 @TypedStatefulShellRoute<RootRoute>(
   branches: [
+    // TODO: pathを共通化するためにbranchディレクトリにしてもいいかも
     TypedStatefulShellBranch<Root1Branch>(
       routes: [
         TypedGoRoute<Root1Route>(
-          path: '/${Root1Route.path}',
+          path: Root1Route.path,
+          // ボトムバーありで遷移する場合はTypedStatefulShellBranchにネストさせる
+          // routes: [
+          //   TypedGoRoute<Root12Route>(
+          //     path: Root12Route.path,
+          //   ),
+          // ],
         ),
       ],
     ),
@@ -68,3 +76,27 @@ class RootRoute extends StatefulShellRouteData {
     );
   }
 }
+
+// @TypedGoRoute<RepoSearchRoute>(
+//   path: RepoSearchRoute.path,
+//   routes: [
+//     TypedGoRoute<RepoDetailsRoute>(
+//       path: RepoDetailsRoute.path,
+//     ),
+//   ],
+// )
+// class RepoSearchRoute extends GoRouteData {
+//   const RepoSearchRoute();
+
+//   static const path = '/repos';
+
+//   @override
+//   Page<void> buildPage(
+//     BuildContext context,
+//     GoRouterState state,
+//   ) =>
+//       _buildFadeTransition(
+//         const RepoSearchScreen(),
+//         state,
+//       );
+// }

@@ -43,6 +43,12 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/root1',
               factory: $Root1RouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: '2',
+                  factory: $Root12RouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -76,6 +82,23 @@ extension $Root1RouteExtension on Root1Route {
 
   String get location => GoRouteData.$location(
         '/root1',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $Root12RouteExtension on Root12Route {
+  static Root12Route _fromState(GoRouterState state) => const Root12Route();
+
+  String get location => GoRouteData.$location(
+        '/root1/2',
       );
 
   void go(BuildContext context) => context.go(location);
