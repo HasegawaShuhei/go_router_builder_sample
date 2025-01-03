@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_builder_sample/router/navigator_key.dart';
 import 'package:go_router_builder_sample/ui/screen/login_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root_1_2_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root_1_screen.dart';
@@ -28,12 +29,11 @@ class LoginRoute extends GoRouteData {
       routes: [
         TypedGoRoute<Root1Route>(
           path: Root1Route.path,
-          // ボトムバーありで遷移する場合はTypedStatefulShellBranchにネストさせる
-          // routes: [
-          //   TypedGoRoute<Root12Route>(
-          //     path: Root12Route.path,
-          //   ),
-          // ],
+          routes: [
+            TypedGoRoute<Root12Route>(
+              path: Root12Route.path,
+            ),
+          ],
         ),
       ],
     ),
@@ -77,26 +77,20 @@ class RootRoute extends StatefulShellRouteData {
   }
 }
 
-// @TypedGoRoute<RepoSearchRoute>(
-//   path: RepoSearchRoute.path,
-//   routes: [
-//     TypedGoRoute<RepoDetailsRoute>(
-//       path: RepoDetailsRoute.path,
-//     ),
-//   ],
+// @TypedGoRoute<Root12Route>(
+//   path: Root12Route.path,
 // )
-// class RepoSearchRoute extends GoRouteData {
-//   const RepoSearchRoute();
+// class Root12Route extends GoRouteData {
+//   const Root12Route();
 
-//   static const path = '/repos';
+//   static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
+
+//   static const path = '/2';
+//   static const fullPath = '/2';
 
 //   @override
-//   Page<void> buildPage(
-//     BuildContext context,
-//     GoRouterState state,
-//   ) =>
-//       _buildFadeTransition(
-//         const RepoSearchScreen(),
-//         state,
-//       );
+//   Widget build(BuildContext context, GoRouterState state) {
+//     return const Root12Screen();
+//   }
 // }
+

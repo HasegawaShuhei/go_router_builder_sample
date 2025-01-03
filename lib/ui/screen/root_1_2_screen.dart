@@ -26,8 +26,11 @@ class Root12Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Root1_2'),
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text('Root1_2'),
+      ),
     );
   }
 }
