@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/router/branch_container.dart';
-import 'package:go_router_builder_sample/ui/root_navigation_bar.dart';
-import 'package:go_router_builder_sample/ui/root_tab.dart';
+import 'package:go_router_builder_sample/routing/branch/branch_container.dart';
+import 'package:go_router_builder_sample/ui/screen/root/root_navigation_bar.dart';
+import 'package:go_router_builder_sample/ui/screen/root/root_tab.dart';
 
 class RootScreen extends StatelessWidget {
   const RootScreen({
@@ -19,7 +19,6 @@ class RootScreen extends StatelessWidget {
     final currentTab = RootTab.current(context);
 
     return Scaffold(
-      // TODO: 出し分けたい場面あるからScaffoldが重複するのは問題ないかも
       appBar: AppBar(
         title: Text(currentTab.title),
         centerTitle: true,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/ui/screen/root_1_screen.dart';
-import 'package:go_router_builder_sample/ui/screen/root_2_screen.dart';
-import 'package:go_router_builder_sample/ui/screen/root_3_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/home/home_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/task/task_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/mypage/mypage_screen.dart';
 
 enum RootTab {
-  root1(Root1Route.path),
-  root2(Root2Route.path),
-  root3(Root3Route.path),
+  root1(HomeRoute.path),
+  root2(TaskRoute.path),
+  root3(SettingsRoute.path),
   ;
 
   const RootTab(this.path);
@@ -33,9 +33,9 @@ extension RootTabExt on RootTab {
       };
 
   String get title => switch (this) {
-        RootTab.root1 => 'root1',
-        RootTab.root2 => 'root2',
-        RootTab.root3 => 'root3',
+        RootTab.root1 => 'home',
+        RootTab.root2 => 'task',
+        RootTab.root3 => 'settings',
       };
 
   /// These values are prescribed by sort order defined in [RootRoute]

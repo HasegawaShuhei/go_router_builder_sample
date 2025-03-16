@@ -38,36 +38,29 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
       factory: $RootRouteExtension._fromState,
       branches: [
         StatefulShellBranchData.$branch(
-          navigatorKey: Root1Branch.$navigatorKey,
+          navigatorKey: HomeBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
-              path: '/root1',
-              factory: $Root1RouteExtension._fromState,
-              routes: [
-                GoRouteData.$route(
-                  path: '2',
-                  parentNavigatorKey: Root12Route.$parentNavigatorKey,
-                  factory: $Root12RouteExtension._fromState,
-                ),
-              ],
+              path: '/home',
+              factory: $HomeRouteExtension._fromState,
             ),
           ],
         ),
         StatefulShellBranchData.$branch(
-          navigatorKey: Root2Branch.$navigatorKey,
+          navigatorKey: TaskBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
-              path: '/root2',
-              factory: $Root2RouteExtension._fromState,
+              path: '/task',
+              factory: $TaskRouteExtension._fromState,
             ),
           ],
         ),
         StatefulShellBranchData.$branch(
-          navigatorKey: Root3Branch.$navigatorKey,
+          navigatorKey: SettingsBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
-              path: '/root3',
-              factory: $Root3RouteExtension._fromState,
+              path: '/settings',
+              factory: $SettingsRouteExtension._fromState,
             ),
           ],
         ),
@@ -78,11 +71,11 @@ extension $RootRouteExtension on RootRoute {
   static RootRoute _fromState(GoRouterState state) => const RootRoute();
 }
 
-extension $Root1RouteExtension on Root1Route {
-  static Root1Route _fromState(GoRouterState state) => const Root1Route();
+extension $HomeRouteExtension on HomeRoute {
+  static HomeRoute _fromState(GoRouterState state) => const HomeRoute();
 
   String get location => GoRouteData.$location(
-        '/root1',
+        '/home',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -95,11 +88,11 @@ extension $Root1RouteExtension on Root1Route {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $Root12RouteExtension on Root12Route {
-  static Root12Route _fromState(GoRouterState state) => const Root12Route();
+extension $TaskRouteExtension on TaskRoute {
+  static TaskRoute _fromState(GoRouterState state) => const TaskRoute();
 
   String get location => GoRouteData.$location(
-        '/root1/2',
+        '/task',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -112,11 +105,11 @@ extension $Root12RouteExtension on Root12Route {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $Root2RouteExtension on Root2Route {
-  static Root2Route _fromState(GoRouterState state) => const Root2Route();
+extension $SettingsRouteExtension on SettingsRoute {
+  static SettingsRoute _fromState(GoRouterState state) => const SettingsRoute();
 
   String get location => GoRouteData.$location(
-        '/root2',
+        '/settings',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -129,19 +122,25 @@ extension $Root2RouteExtension on Root2Route {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $Root3RouteExtension on Root3Route {
-  static Root3Route _fromState(GoRouterState state) => const Root3Route();
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
 
-  String get location => GoRouteData.$location(
-        '/root3',
-      );
+String _$routerHash() => r'5dca40591117e2aaa84a1fd50da879b4b84beda5';
 
-  void go(BuildContext context) => context.go(location);
+/// See also [router].
+@ProviderFor(router)
+final routerProvider = AutoDisposeProvider<GoRouter>.internal(
+  router,
+  name: r'routerProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$routerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RouterRef = AutoDisposeProviderRef<GoRouter>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_builder_sample/provider/auth_notifier.dart';
-import 'package:go_router_builder_sample/router/guards/route_guard_interface.dart';
+import 'package:go_router_builder_sample/routing/guards/route_guard_interface.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_route_guard.g.dart';
