@@ -7,31 +7,9 @@ part of 'router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $loginRoute,
       $rootRoute,
+      $loginRoute,
     ];
-
-RouteBase get $loginRoute => GoRouteData.$route(
-      path: '/login',
-      factory: $LoginRouteExtension._fromState,
-    );
-
-extension $LoginRouteExtension on LoginRoute {
-  static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
-
-  String get location => GoRouteData.$location(
-        '/login',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
 
 RouteBase get $rootRoute => StatefulShellRouteData.$route(
       navigatorContainerBuilder: RootRoute.$navigatorContainerBuilder,
@@ -52,15 +30,22 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/task',
               factory: $TaskRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: ':taskId',
+                  parentNavigatorKey: TaskDetailRoute.$parentNavigatorKey,
+                  factory: $TaskDetailRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
         StatefulShellBranchData.$branch(
-          navigatorKey: SettingsBranch.$navigatorKey,
+          navigatorKey: MypageBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
-              path: '/settings',
-              factory: $SettingsRouteExtension._fromState,
+              path: '/mypage',
+              factory: $MypageRouteExtension._fromState,
             ),
           ],
         ),
@@ -105,11 +90,53 @@ extension $TaskRouteExtension on TaskRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $SettingsRouteExtension on SettingsRoute {
-  static SettingsRoute _fromState(GoRouterState state) => const SettingsRoute();
+extension $TaskDetailRouteExtension on TaskDetailRoute {
+  static TaskDetailRoute _fromState(GoRouterState state) => TaskDetailRoute(
+        taskId: state.pathParameters['taskId']!,
+      );
 
   String get location => GoRouteData.$location(
-        '/settings',
+        '/task/${Uri.encodeComponent(taskId)}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $MypageRouteExtension on MypageRoute {
+  static MypageRoute _fromState(GoRouterState state) => const MypageRoute();
+
+  String get location => GoRouteData.$location(
+        '/mypage',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $loginRoute => GoRouteData.$route(
+      path: '/login',
+      parentNavigatorKey: LoginRoute.$parentNavigatorKey,
+      factory: $LoginRouteExtension._fromState,
+    );
+
+extension $LoginRouteExtension on LoginRoute {
+  static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
+
+  String get location => GoRouteData.$location(
+        '/login',
       );
 
   void go(BuildContext context) => context.go(location);

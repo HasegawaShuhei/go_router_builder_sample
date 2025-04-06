@@ -22,12 +22,8 @@ class BranchContainer extends StatelessWidget {
               milliseconds: 400,
             ),
             opacity: index == currentIndex ? 1 : 0,
-
-            // Avoid detecting tap event in non selected screen
             child: IgnorePointer(
               ignoring: index != currentIndex,
-
-              // Avoid detecting scroll event in non selected screen
               child: TickerMode(
                 enabled: index == currentIndex,
                 child: navigator,

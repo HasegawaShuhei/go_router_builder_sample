@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_builder_sample/ui/screen/home/home_screen.dart';
-import 'package:go_router_builder_sample/ui/screen/task/task_screen.dart';
-import 'package:go_router_builder_sample/ui/screen/mypage/mypage_screen.dart';
+
+import '../../../routing/router.dart';
 
 enum RootTab {
   root1(HomeRoute.path),
   root2(TaskRoute.path),
-  root3(SettingsRoute.path),
+  root3(MypageRoute.path),
   ;
 
   const RootTab(this.path);

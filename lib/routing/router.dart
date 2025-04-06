@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_builder_sample/ui/screen/login/login_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/home/home_screen.dart';
+import 'package:go_router_builder_sample/ui/screen/task/task_details_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/task/task_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/mypage/mypage_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/root/root_screen.dart';
@@ -12,6 +13,10 @@ import 'package:go_router_builder_sample/routing/refresh_listenable.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
+part './routes/common_routes.dart';
+part './routes/home_shell_branch_routes.dart';
+part './routes/task_shell_branch_routes.dart';
+part 'routes/mypage_shell_branch_routes.dart';
 
 @riverpod
 GoRouter router(Ref ref) {
@@ -24,18 +29,6 @@ GoRouter router(Ref ref) {
       ...$appRoutes,
     ],
   );
-}
-
-@TypedGoRoute<LoginRoute>(path: LoginRoute.path)
-class LoginRoute extends GoRouteData {
-  const LoginRoute();
-
-  static const path = '/login';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const LoginScreen();
-  }
 }
 
 @TypedStatefulShellRoute<RootRoute>(
@@ -51,13 +44,18 @@ class LoginRoute extends GoRouteData {
       routes: [
         TypedGoRoute<TaskRoute>(
           path: '/${TaskRoute.path}',
+          routes: [
+            TypedGoRoute<TaskDetailRoute>(
+              path: TaskDetailRoute.path,
+            ),
+          ],
         ),
       ],
     ),
-    TypedStatefulShellBranch<SettingsBranch>(
+    TypedStatefulShellBranch<MypageBranch>(
       routes: [
-        TypedGoRoute<SettingsRoute>(
-          path: '/${SettingsRoute.path}',
+        TypedGoRoute<MypageRoute>(
+          path: '/${MypageRoute.path}',
         ),
       ],
     ),
