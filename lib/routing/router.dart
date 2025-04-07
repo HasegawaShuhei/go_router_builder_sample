@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_builder_sample/provider/app_launch_status.dart';
-import 'package:go_router_builder_sample/provider/auth_notifier.dart';
 import 'package:go_router_builder_sample/ui/screen/login/login_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/home/home_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/task/task_details_screen.dart';

@@ -19,7 +19,7 @@ class BranchContainer extends StatelessWidget {
         ...children.mapIndexed(
           (index, navigator) => AnimatedOpacity(
             duration: const Duration(
-              milliseconds: 400,
+              milliseconds: 100,
             ),
             opacity: index == currentIndex ? 1 : 0,
             child: IgnorePointer(
