@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_builder_sample/provider/app_launch_status.dart';
+import 'package:go_router_builder_sample/provider/auth_notifier.dart';
 import 'package:go_router_builder_sample/ui/screen/login/login_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/home/home_screen.dart';
 import 'package:go_router_builder_sample/ui/screen/task/task_details_screen.dart';
@@ -20,14 +22,26 @@ part 'routes/mypage_shell_branch_routes.dart';
 
 @riverpod
 GoRouter router(Ref ref) {
+  final refreshListenable = ref.watch(refreshListenableProvider.notifier);
   return GoRouter(
     debugLogDiagnostics: kDebugMode,
     navigatorKey: rootNavigatorKey,
-    initialLocation: '/home',
-    refreshListenable: ref.watch(refreshListenableProvider.notifier),
+    initialLocation: '/login',
+    refreshListenable: refreshListenable,
     routes: [
       ...$appRoutes,
     ],
+    redirect: (context, state) async {
+      final (:status, :exception) =
+          await ref.read(appLaunchStatusProvider.future);
+      if (status.isAuthorized && state.matchedLocation != '/login') {
+        return null;
+      }
+      if (status.isAuthorized) {
+        return '/home';
+      }
+      return '/login';
+    },
   );
 }
 

@@ -1,43 +1,21 @@
-// TODO:
-// redirectでのログアウト
-// guardでのログインチェック
-// pop until
-// pushNamedAndRemoveUntil
-// animation
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router_builder_sample/provider/auth_notifier.dart';
 
-class LoginRoute extends GoRouteData {
-  const LoginRoute();
-
-  static const path = 'login';
-
-  // @override
-  // Widget build(BuildContext context, GoRouterState state) {
-  //   return const LoginScreen();
-  // }
-
-  @override
-  MaterialPage<void> buildPage(BuildContext context, GoRouterState state) {
-    return const MaterialPage<void>(
-      child: LoginScreen(),
-    );
-  }
-}
-
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () async {
+            await ref.read(authNotifierProvider.notifier).login();
+          },
           child: const Text('Login'),
         ),
       ),

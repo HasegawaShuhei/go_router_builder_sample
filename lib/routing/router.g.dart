@@ -153,7 +153,7 @@ extension $LoginRouteExtension on LoginRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'5dca40591117e2aaa84a1fd50da879b4b84beda5';
+String _$routerHash() => r'd03efec747c649030f725dfcffce8ca0d7c25066';
 
 /// See also [router].
 @ProviderFor(router)

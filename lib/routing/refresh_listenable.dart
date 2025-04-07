@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router_builder_sample/provider/auth_notifier.dart';
+import 'package:go_router_builder_sample/provider/app_launch_status.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'refresh_listenable.g.dart';
@@ -10,7 +10,7 @@ class RefreshListenable extends _$RefreshListenable implements Listenable {
 
   @override
   Future<void> build() async {
-    ref.listen(authNotifierProvider, (_, __) {
+    ref.listen(appLaunchStatusProvider, (_, next) {
       routerListener?.call();
     });
   }
