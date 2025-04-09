@@ -2,17 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class TaskDetailsScreen extends StatelessWidget {
-  const TaskDetailsScreen({super.key, required this.id});
-
-  final String id;
+class LaunchLoadingScreen extends StatelessWidget {
+  const LaunchLoadingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Center(
-        child: Text('Task Details: $id'),
+        child: CircularProgressIndicator(),
       ),
     );
   }

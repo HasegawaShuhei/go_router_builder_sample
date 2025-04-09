@@ -5,23 +5,26 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'app_launch_status.g.dart';
 
 @Riverpod(keepAlive: true)
-Future<({AppLaunchStatus status, Exception? exception})> appLaunchStatus(
+({AppLaunchStatus status, Exception? exception}) appLaunchStatus(
   Ref ref,
-) async {
+) {
   final authStatus = ref.watch(authNotifierProvider);
-  return switch (authStatus) {
-    AsyncError(:final error) => (
-        status: AppLaunchStatus.error,
-        exception: error as Exception
-      ),
-    AsyncLoading() => (status: AppLaunchStatus.loading, exception: null),
-    AsyncData(:final value) => (
+  late ({AppLaunchStatus status, Exception? exception}) result;
+  switch (authStatus) {
+    case AsyncError(:final error):
+      result = (status: AppLaunchStatus.error, exception: error as Exception);
+    case AsyncLoading():
+      result = (status: AppLaunchStatus.loading, exception: null);
+    case AsyncData(:final value):
+      result = (
         status:
             value ? AppLaunchStatus.authorized : AppLaunchStatus.unauthorized,
         exception: null
-      ),
-    _ => throw Exception('unexpected authStatus'),
-  };
+      );
+    case _:
+      throw Exception('Unexected state: $authStatus');
+  }
+  return result;
 }
 
 enum AppLaunchStatus {

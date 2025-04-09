@@ -10,7 +10,7 @@ class AuthNotifier extends _$AuthNotifier {
 
   @override
   FutureOr<bool> build() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 3));
     final isLoggedIn = await _asyncPrefs.getBool(_isLoggedInKey);
     return isLoggedIn ?? false;
   }
